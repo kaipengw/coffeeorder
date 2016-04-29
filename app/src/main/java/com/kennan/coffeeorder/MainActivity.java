@@ -2,6 +2,7 @@ package com.kennan.coffeeorder;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -10,7 +11,8 @@ public class MainActivity extends AppCompatActivity {
     private int quantity = 0;
     private double price = 0d;
     private double toppingPrice = 0d;
-    private boolean isToppingPriceChecked = false;
+    private boolean isWhippedCreamToppingChecked = false;
+    private boolean isChocolateToppingChecked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +27,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayPrice(double price) {
         TextView orderSummary = (TextView) findViewById(R.id.order_summary_text_view);
-        String displayedText = "Add whipped cream? " + isToppingPriceChecked + "\nName: Lyla\nTotal: $" + price + "\nThank you!";
-        orderSummary.setText(displayedText);
+        String addChocolate = "Add chocolate? " + isChocolateToppingChecked + "\n";
+        String addWhippedCream = "Add whipped cream? " + isWhippedCreamToppingChecked + "\n";
+        String nameOutput = "Name: Lyla John\n";
+        String priceOutput = "Total: $" + price + "\n";
+        String thankyouOutput = "Thank you!\n";
+        orderSummary.setText(addChocolate + addWhippedCream + nameOutput + priceOutput + thankyouOutput);
 
     }
     public void order(View view) {
-        displayPrice(5 * quantity + (isToppingPriceChecked ? 2.5d : 0d));
+        displayPrice(5 * quantity + (isWhippedCreamToppingChecked ? 1.5d : 0d) + (isChocolateToppingChecked ? 2.5d : 0d));
     }
 
     public void minusOne(View view) {
@@ -48,6 +54,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickTopping(View view) {
-        isToppingPriceChecked = !isToppingPriceChecked;
+//        isWhippedCreamToppingChecked = !isWhippedCreamToppingChecked;
+        boolean isChecked = ((CheckBox) view).isChecked();
+        Log.i(this.getClass().toString(), view.toString());
+        switch (view.getId()) {
+            case R.id.chocolate_topping_check_box:
+                if (isChecked) {
+                    isChocolateToppingChecked = true;
+                } else {
+                    isChocolateToppingChecked = false;
+                }
+                break;
+            case R.id.whipped_cream_topping_check_box:
+                if (isChecked) {
+                    isWhippedCreamToppingChecked = true;
+                } else {
+                    isWhippedCreamToppingChecked = false;
+                }
+                break;
+            default:
+                return;
+        }
     }
 }
