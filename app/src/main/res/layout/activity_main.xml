@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,30 +18,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:orientation="vertical"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Topping:" />
-
-
-                <CheckBox
-                    android:id="@+id/chocolate_topping_check_box"
+                    android:text="@string/name"
+                    style="@style/headerFont"
+                    android:fontFamily="serif"
+                    />
+                <EditText
+                    android:id="@+id/name_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:onClick="onClickTopping"
-                    android:text="Chocolate" />
+                    android:hint="Input your name here"
+                    android:maxLength="9"
+                    android:digits="@string/validAlphabets"
+                    />
 
-                <CheckBox
-                    android:id="@+id/whipped_cream_topping_check_box"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:onClick="onClickTopping"
-                    android:text="Whipped Cream" />
             </LinearLayout>
 
             <LinearLayout
@@ -54,8 +49,45 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Quantity"
-                    android:textAllCaps="true" />
+                    android:text="@string/toppings"
+                    android:textAllCaps="true"
+                    style="@style/headerFont"
+                    android:fontFamily="serif"
+                    />
+
+
+                <CheckBox
+                    android:id="@+id/chocolate_topping_check_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:onClick="onClickTopping"
+                    android:text="@string/chocolate" />
+
+                <CheckBox
+                    android:id="@+id/whipped_cream_topping_check_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:onClick="onClickTopping"
+                    android:text="@string/whipped_cream" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/quantity"
+                    android:textAllCaps="true"
+                    android:fontFamily="serif"
+                    style="@style/headerFont"
+                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -97,8 +129,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Order Summary"
-                    android:textAllCaps="true" />
+                    android:text="@string/order"
+                    android:textAllCaps="true"
+                    android:fontFamily="serif"
+                    style="@style/headerFont"
+                    />
 
                 <TextView
                     android:id="@+id/order_summary_text_view"
@@ -115,8 +150,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
+                android:text="@string/order"
                 android:onClick="order"
-                android:text="Order" />
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Email the order"
+                android:onClick="emailTheOrder"
+                />
+
 
 
         </LinearLayout>
